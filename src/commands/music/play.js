@@ -20,7 +20,7 @@ module.exports = {
     }
 
     try {
-      await interaction.reply({ content: `🔍 Searching for: \`${query}\`` });
+      await interaction.reply({ content: `🔍 Searching for: \`${query}\``, ephemeral: true });
 
       await client.distube.play(voiceChannel, query, {
         member: interaction.member,

@@ -11,11 +11,17 @@ module.exports = (distube) => {
 
     distube.on('playSong', (queue, song) => {
         const embed = new EmbedBuilder()
-            .setColor('#1DB954')
-            .setTitle('Now Playing')
-            .setDescription(`Now playing: **${song.name}**! 🎧`);
+          .setTitle('Now Playing')
+          .setDescription(`[${song.name}](${song.url})`)
+          .setImage(song.thumbnail)
+          .addFields(
+            { name: 'Duration', value: song.formattedDuration, inline: true },
+            { name: 'Requested by', value: `${song.user}`, inline: true }
+          )
+          .setColor('Blue');
+        
         queue.textChannel.send({ embeds: [embed] });
-    });
+      });
 
     distube.on('stop', (queue) => {
         const embed = new EmbedBuilder()

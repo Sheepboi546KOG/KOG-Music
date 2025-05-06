@@ -14,6 +14,7 @@ module.exports = {
     try {
       queue.stop();
       interaction.reply({ content: '⏹️ Stopped playback and cleared the queue.' });
+      
     } catch (err) {
       console.error(err);
       interaction.reply({ content: 'Could not stop the music.', ephemeral: true });

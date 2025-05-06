@@ -35,7 +35,7 @@ module.exports = {
             queue.seek(timeInSeconds);
             return interaction.reply({
                 content: `Fast-forwarded to ${formatTime(timeInSeconds)}!`,
-                ephemeral: true
+                ephemeral: false
             });
         } catch (error) {
             console.error(error);
