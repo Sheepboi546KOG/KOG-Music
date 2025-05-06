@@ -29,7 +29,12 @@ module.exports = {
 
     } catch (err) {
       console.error(err);
-      interaction.followUp({ content: '❌ Failed to play the song.', ephemeral: true });
+
+      if (err.errorCode === 'SOUNDCLOUD_PLUGIN_RATE_LIMITED') {
+        interaction.followUp({ content: '❌ SoundCloud rate limit reached. Please try again later or use a different source.', ephemeral: true });
+      } else {
+        interaction.followUp({ content: '❌ Failed to play the song.', ephemeral: true });
+      }
     }
   }
 };
